@@ -215,8 +215,8 @@ const DEMO = {
 const PRIZES = {
   third:      {medal:"🥉", rank:"3등", cls:"bronze", tier:1, desc:"목표 점수에 두 번째로 가깝게 도착한 사람"},
   second:     {medal:"🥈", rank:"2등", cls:"silver", tier:2, desc:"목표 점수를 가장 크게 뛰어넘은 사람"},
-  first_exact:{medal:"🥇", rank:"1등", cls:"",       tier:3, desc:"목표 점수를 가장 정확하게 맞힌 사람", sub:"첫 번째 주인공"},
-  first_avg:  {medal:"🥇", rank:"1등", cls:"",       tier:3, desc:"우리 반 3과목 평균 1등", sub:"두 번째 주인공"},
+  first_exact:{medal:"🥇", rank:"1등", cls:"",       tier:3, desc:"목표 점수를 가장 정확하게 맞힌 사람", sub:"두 번째 주인공"},
+  first_avg:  {medal:"🥇", rank:"1등", cls:"",       tier:3, desc:"우리 반 3과목 평균 1등", sub:"첫 번째 주인공"},
 };
 
 const $ = s => document.querySelector(s);
@@ -501,8 +501,8 @@ function sceneFirstDuo(){
   stage.innerHTML = `
     <div class="rankline zoomIn"><div class="medal">🥇</div><div class="mega">오늘의 1등</div><div class="medal">🥇</div></div>
     <div class="duo">
-      <div class="namecard fadeUp d1"><div class="label">🎯 목표 점수를 가장 정확하게</div><div class="name locked">${esc(a.join(', ') || '-')}</div></div>
-      <div class="namecard fadeUp d2"><div class="label">📚 우리 반 3과목 평균 1등</div><div class="name locked">${esc(b.join(', ') || '-')}</div></div>
+      <div class="namecard fadeUp d1"><div class="label">📚 우리 반 3과목 평균 1등</div><div class="name locked">${esc(b.join(', ') || '-')}</div></div>
+      <div class="namecard fadeUp d2"><div class="label">🎯 목표 점수를 가장 정확하게</div><div class="name locked">${esc(a.join(', ') || '-')}</div></div>
     </div>
     <div class="congrats fadeUp d3">모두 박수! 👏👏👏</div>`;
   fanfare(3); confetti(300); fireworksShow(10, 250);
@@ -578,8 +578,8 @@ function sceneFinale(){
   stage.innerHTML = `
     <div class="mega zoomIn" style="font-size:clamp(44px,7vw,100px)">🎉 축하합니다 🎉</div>
     <div class="board">
-      <div class="tile gold fadeUp d1"><div class="t">🥇 1등 · 목표 적중</div><div class="n">${j(DATA.first_exact)}</div></div>
       <div class="tile gold fadeUp d1"><div class="t">🥇 1등 · 평균 1등</div><div class="n">${j(DATA.first_avg)}</div></div>
+      <div class="tile gold fadeUp d1"><div class="t">🥇 1등 · 목표 적중</div><div class="n">${j(DATA.first_exact)}</div></div>
       <div class="tile silver fadeUp d2"><div class="t">🥈 2등 · 목표 초과 최다</div><div class="n">${j(DATA.second)}</div></div>
       <div class="tile bronze fadeUp d2"><div class="t">🥉 3등 · 목표 근접</div><div class="n">${j(DATA.third)}</div></div>
       ${DATA.bonusAvailable ? `<div class="tile bonus fadeUp d3"><div class="t">⭐ 보너스 · ${esc(DATA.bonusAnswer)}등 예언 적중</div><div class="n">${j(DATA.bonus)}</div></div>` : ''}
@@ -596,10 +596,10 @@ const STEPS = [
   () => { sceneTeaser('second'); },
   () => sceneReveal('second'),
   () => { sceneFirstInterlude(); },
-  () => { sceneTeaser('first_exact'); },
-  () => sceneReveal('first_exact'),
   () => { sceneTeaser('first_avg'); },
   () => sceneReveal('first_avg'),
+  () => { sceneTeaser('first_exact'); },
+  () => sceneReveal('first_exact'),
   () => { sceneFirstDuo(); },
   () => { sceneBonusTeaser(); },
   () => sceneBonusAnswer(),
